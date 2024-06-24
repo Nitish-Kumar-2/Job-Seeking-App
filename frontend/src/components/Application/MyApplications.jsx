@@ -159,6 +159,7 @@ const JobSeekerCard = ({ element, deleteApplication, openModal }) => {
 };
 
 const EmployerCard = ({ element, openModal }) => {
+  console.log("resumeeee,", element.resume.url);
   return (
     <>
       <div className="job_seeker_card">

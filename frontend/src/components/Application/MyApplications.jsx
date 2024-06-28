@@ -3,14 +3,9 @@ import { Context } from "../../main";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import ResumeModal from "./ResumeModal";
-
 const MyApplications = () => {
   const { user } = useContext(Context);
   const [applications, setApplications] = useState([]);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [resumeImageUrl, setResumeImageUrl] = useState("");
-
   const { isAuthorized } = useContext(Context);
   const navigateTo = useNavigate();
 
@@ -58,16 +53,6 @@ const MyApplications = () => {
       toast.error(error.response.data.message);
     }
   };
-
-  const openModal = (imageUrl) => {
-    setResumeImageUrl(imageUrl);
-    setModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalOpen(false);
-  };
-
   return (
     <section className="my_applications page">
       {user && user.role === "Job Seeker" ? (
@@ -85,7 +70,6 @@ const MyApplications = () => {
                   element={element}
                   key={element._id}
                   deleteApplication={deleteApplication}
-                  openModal={openModal}
                 />
               );
             })
@@ -104,15 +88,11 @@ const MyApplications = () => {
                 <EmployerCard
                   element={element}
                   key={element._id}
-                  openModal={openModal}
                 />
               );
             })
           )}
         </div>
-      )}
-      {modalOpen && (
-        <ResumeModal imageUrl={resumeImageUrl} onClose={closeModal} />
       )}
     </section>
   );
@@ -120,7 +100,7 @@ const MyApplications = () => {
 
 export default MyApplications;
 
-const JobSeekerCard = ({ element, deleteApplication, openModal }) => {
+const JobSeekerCard = ({ element, deleteApplication }) => {
   return (
     <>
       <div className="job_seeker_card">
@@ -142,10 +122,10 @@ const JobSeekerCard = ({ element, deleteApplication, openModal }) => {
           </p>
         </div>
         <div className="resume">
-          <img
+          <iframe
             src={element.resume.url}
-            alt="resume"
-            onClick={() => openModal(element.resume.url)}
+            style={{ width: '250px', height: '700px', border: 'none' }}
+            title="PDF Viewer"
           />
         </div>
         <div className="btn_area">
@@ -159,7 +139,6 @@ const JobSeekerCard = ({ element, deleteApplication, openModal }) => {
 };
 
 const EmployerCard = ({ element, openModal }) => {
-  console.log("resumeeee,", element.resume.url);
   return (
     <>
       <div className="job_seeker_card">
@@ -181,10 +160,10 @@ const EmployerCard = ({ element, openModal }) => {
           </p>
         </div>
         <div className="resume">
-          <img
+        <iframe
             src={element.resume.url}
-            alt="resume"
-            onClick={() => openModal(element.resume.url)}
+            style={{ width: '250px', height: '700px', border: 'none' }}
+            title="PDF Viewer"
           />
         </div>
       </div>

@@ -3,18 +3,17 @@ import { dbConnection } from "./database/dbConnection.js";
 import jobRouter from "./routes/jobRoutes.js";
 import userRouter from "./routes/userRoutes.js";
 import applicationRouter from "./routes/applicationRoutes.js";
-import { config } from "dotenv";
 import cors from "cors";
 import { errorMiddleware } from "./middlewares/error.js";
 import cookieParser from "cookie-parser";
 import fileUpload from "express-fileupload";
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
-config({ path: "./config/config.env" });
-
 app.use(
   cors({
-    origin: ['http://localhost:5173'],
+    origin: ["http://localhost:5173"],
     method: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
   })

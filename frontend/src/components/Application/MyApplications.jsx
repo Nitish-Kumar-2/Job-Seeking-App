@@ -69,45 +69,36 @@ const MyApplications = () => {
   };
 
   return (
-    <section className="my_applications page">
+    <section className="bg-gray-100 py-12 px-4 min-h-screen">
       {user && user.role === "Job Seeker" ? (
-        <div className="container">
-          <h1>My Applications</h1>
+        <div className="max-w-screen-lg gap-9 mx-auto">
+          <h1 className="text-5xl text-center">My Applications</h1>
           {applications.length <= 0 ? (
-            <>
-              {" "}
-              <h4>No Applications Found</h4>{" "}
-            </>
+            <h4 className="text-xl sm:text-3xl text-center">No Applications Found</h4>
           ) : (
-            applications.map((element) => {
-              return (
-                <JobSeekerCard
-                  element={element}
-                  key={element._id}
-                  deleteApplication={deleteApplication}
-                  openModal={openModal}
-                />
-              );
-            })
+            applications.map((element) => (
+              <JobSeekerCard
+                element={element}
+                key={element._id}
+                deleteApplication={deleteApplication}
+                openModal={openModal}
+              />
+            ))
           )}
         </div>
       ) : (
-        <div className="container">
-          <h1>Applications From Job Seekers</h1>
+        <div className="max-w-screen-lg flex flex-col gap-9 mx-auto">
+          <h1 className="text-5xl text-center">Applications From Job Seekers</h1>
           {applications.length <= 0 ? (
-            <>
-              <h4>No Applications Found</h4>
-            </>
+            <h4 className="text-xl sm:text-3xl text-center">No Applications Found</h4>
           ) : (
-            applications.map((element) => {
-              return (
-                <EmployerCard
-                  element={element}
-                  key={element._id}
-                  openModal={openModal}
-                />
-              );
-            })
+            applications.map((element) => (
+              <EmployerCard
+                element={element}
+                key={element._id}
+                openModal={openModal}
+              />
+            ))
           )}
         </div>
       )}
@@ -120,73 +111,78 @@ const MyApplications = () => {
 
 export default MyApplications;
 
+
 const JobSeekerCard = ({ element, deleteApplication, openModal }) => {
   return (
-    <>
-      <div className="job_seeker_card">
-        <div className="detail">
-          <p>
-            <span>Name:</span> {element.name}
-          </p>
-          <p>
-            <span>Email:</span> {element.email}
-          </p>
-          <p>
-            <span>Phone:</span> {element.phone}
-          </p>
-          <p>
-            <span>Address:</span> {element.address}
-          </p>
-          <p>
-            <span>CoverLetter:</span> {element.coverLetter}
-          </p>
-        </div>
-        <div className="resume">
-          <img
-            src={element.resume.url}
-            alt="resume"
-            onClick={() => openModal(element.resume.url)}
-          />
-        </div>
-        <div className="btn_area">
-          <button onClick={() => deleteApplication(element._id)}>
-            Delete Application
-          </button>
+    <div className="flex flex-col sm:flex-row border-b border-gray-300 py-5 gap-4 items-center text-center sm:text-left">
+      <div className="flex-2 flex flex-col gap-1 pr-4 w-full sm:w-auto">
+        <p>
+          <span className="font-bold">Name:</span> {element.name}
+        </p>
+        <p>
+          <span className="font-bold">Email:</span> {element.email}
+        </p>
+        <p>
+          <span className="font-bold">Phone:</span> {element.phone}
+        </p>
+        <p>
+          <span className="font-bold">Address:</span> {element.address}
+        </p>
+        <div >
+          <span className="font-bold">Cover Letter:</span>
+          <p >{element.coverLetter}</p>
         </div>
       </div>
-    </>
+      <div className="relative h-52 sm:h-64 flex-1 w-full sm:w-auto flex items-center justify-center">
+        <img
+          src={element.resume.url}
+          alt="resume"
+          className="w-full h-full object-cover cursor-pointer"
+          onClick={() => openModal(element.resume.url)}
+        />
+      </div>
+      <div className="flex-1 flex items-center justify-center w-full sm:w-auto sm:ml-auto">
+        <button
+          onClick={() => deleteApplication(element._id)}
+          className="bg-red-200 text-red-800 hover:text-white py-2 rounded-lg px-4 sm:px-6 text-sm sm:text-lg font-medium hover:bg-red-600"
+        >
+          Delete Application
+        </button>
+      </div>
+    </div>
   );
 };
 
 const EmployerCard = ({ element, openModal }) => {
   return (
-    <>
-      <div className="job_seeker_card">
-        <div className="detail">
-          <p>
-            <span>Name:</span> {element.name}
-          </p>
-          <p>
-            <span>Email:</span> {element.email}
-          </p>
-          <p>
-            <span>Phone:</span> {element.phone}
-          </p>
-          <p>
-            <span>Address:</span> {element.address}
-          </p>
-          <p>
-            <span>CoverLetter:</span> {element.coverLetter}
-          </p>
-        </div>
-        <div className="resume">
-          <img
-            src={element.resume.url}
-            alt="resume"
-            onClick={() => openModal(element.resume.url)}
-          />
+    <div className="flex flex-col sm:flex-row border-b border-gray-300 py-5 gap-4 items-center text-center sm:text-left">
+      <div className="flex flex-col gap-1 pr-4 w-full sm:w-auto">
+        <p>
+          <span className="font-bold">Name:</span> {element.name}
+        </p>
+        <p>
+          <span className="font-bold">Email:</span> {element.email}
+        </p>
+        <p>
+          <span className="font-bold">Phone:</span> {element.phone}
+        </p>
+        <p>
+          <span className="font-bold">Address:</span> {element.address}
+        </p>
+        <div >
+          <span className="font-bold">Cover Letter:</span>
+          <p >{element.coverLetter}</p>
         </div>
       </div>
-    </>
+      <div className="relative h-52 sm:h-64 flex-1 w-full sm:w-auto flex items-center justify-center">
+        <img
+          src={element.resume.url}
+          alt="resume"
+          className="w-full h-full object-cover cursor-pointer"
+          onClick={() => openModal(element.resume.url)}
+        />
+      </div>
+    </div>
   );
 };
+

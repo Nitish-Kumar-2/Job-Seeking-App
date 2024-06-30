@@ -1,5 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+/* 
 * {
   margin: 0;
   padding: 0;
@@ -70,9 +74,9 @@ p {
   h6 {
     font-size: 1.15rem;
   }
-}
+} */
 
-.authPage {
+/* .authPage {
   display: flex;
   min-width: 1500px;
   max-width: 1500px;
@@ -193,9 +197,9 @@ p {
     flex: none;
     display: none;
   }
-}
+} */
 
-.footerShow {
+/* .footerShow {
   background: #18191c;
   display: flex;
   justify-content: space-between;
@@ -232,12 +236,12 @@ p {
     gap: 25px;
     text-align: center;
   }
-}
-.navbarHide {
+} */
+/* .navbarHide {
   display: none;
-}
+} */
 
-.heroSection {
+/* .heroSection {
   display: flex;
   flex-direction: column;
   padding: 75px 0 50px 0;
@@ -364,8 +368,8 @@ p {
     min-width: 100%;
     max-width: 100%;
   }
-}
-.howitworks {
+} */
+/* .howitworks {
   background: #f1f3f6;
 }
 .howitworks .container {
@@ -428,9 +432,9 @@ p {
   .howitworks .container .banner .card {
     width: 100%;
   }
-}
+} */
 
-.categories {
+/* .categories {
   min-width: 1500px;
   max-width: 1500px;
   display: flex;
@@ -497,9 +501,9 @@ p {
   .categories .banner .card {
     width: 100%;
   }
-}
+} */
 
-.companies {
+/* .companies {
   background: #f1f3f6;
   padding: 50px 0;
 }
@@ -583,8 +587,8 @@ p {
   .companies .container .banner .card {
     width: 100%;
   }
-}
-.jobs {
+} */
+/* .jobs {
   background: #f1f3f6;
   min-height: 100vh;
   padding: 50px 20px;
@@ -659,9 +663,9 @@ p {
   .jobs .container .banner .card {
     width: 100%;
   }
-}
+} */
 
-.jobDetail {
+/* .jobDetail {
   background: #f1f3f6;
   padding: 50px 20px;
 }
@@ -705,8 +709,8 @@ p {
   .jobDetail .container {
     min-width: 100%;
   }
-}
-.application {
+} */
+/* .application {
   display: flex;
   flex-direction: column;
 }
@@ -766,8 +770,8 @@ p {
   .application .container form {
     width: 100%;
   }
-}
-.my_applications {
+} */
+/* .my_applications {
   background: #f1f3f6;
   padding: 50px 20px;
   min-height: 885px;
@@ -866,9 +870,9 @@ p {
   .job_seeker_card .resume {
     width: 100%;
   }
-}
+} */
 
-.job_post {
+/* .job_post {
   background: #f1f3f6;
   padding: 50px 20px;
   min-height: 870px;
@@ -970,8 +974,8 @@ p {
   .job_post .container form .salary_wrapper select {
     width: 100%;
   }
-}
-.myJobs {
+} */
+/* .myJobs {
   background: #f1f3f6;
   padding: 50px 20px;
   min-height: 870px;
@@ -1147,19 +1151,19 @@ p {
   .myJobs .container .banner .card .content .long_fields div {
     gap: 8px;
   }
-}
-nav {
+} */
+/* nav {
   background: #18191c;
   padding: 0 20px;
-}
-nav .container {
+} */
+/* nav .container {
   max-width: 1500px;
   min-width: 1500px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-}
-nav .container .logo {
+} */
+/* nav .container .logo {
   width: 120px;
   height: 120px;
 }
@@ -1290,8 +1294,8 @@ nav .hamburger {
   nav .menu {
     width: 100%;
   }
-}
-.notfound {
+} */
+/* .notfound {
   min-height: 750px;
 }
 .notfound .content {
@@ -1312,8 +1316,8 @@ nav .hamburger {
   background: #184235;
   transition: all 0.3s;
   color: #f1f3f6;
-}
-.resume-modal {
+} */
+/* .resume-modal {
   width: 100%;
   display: flex;
   background: #00000085;
@@ -1348,4 +1352,4 @@ nav .hamburger {
   .resume-modal {
     z-index: 11;
   }
-}
+} */

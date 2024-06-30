@@ -27,24 +27,29 @@ const PopularCompanies = () => {
     },
   ];
   return (
-    <div className="companies">
-      <div className="container">
-        <h3>TOP COMPANIES</h3>
-        <div className="banner">
-          {companies.map((element) => {
-            return (
-              <div className="card" key={element.id}>
-                <div className="content">
-                  <div className="icon">{element.icon}</div>
-                  <div className="text">
-                    <p>{element.title}</p>
-                    <p>{element.location}</p>
-                  </div>
+    <div className="bg-[#f1f3f6] py-12">
+      <div className="max-w-full lg:max-w-[1500px] mx-auto flex flex-col items-center gap-8 px-4 lg:px-0">
+        <h3 className="text-center text-5xl mb-4">TOP COMPANIES</h3>
+        <div className="flex flex-col lg:flex-row justify-center lg:justify-between gap-8 w-full">
+          {companies.map((element) => (
+            <div
+              className="w-full lg:w-[340px] bg-white p-5 flex flex-col gap-3 shadow transition-shadow  hover:shadow-lg"
+              key={element.id}
+            >
+              <div className="flex items-center gap-3">
+                <div className="text-2xl p-2.5 bg-[#e9f9ff] text-[#7469B6] flex items-center justify-center">
+                  {element.icon}
                 </div>
-                <button>Open Positions {element.openPositions}</button>
+                <div className="flex flex-col">
+                  <p className="font-bold mb-1 text-lg">{element.title}</p>
+                  <p className="text-sm text-gray-500">{element.location}</p>
+                </div>
               </div>
-            );
-          })}
+              <button className="text-[#7469B6] bg-[#e9f9ff] font-bold text-lg border-none py-2.5 mt-2">
+                Open Positions {element.openPositions}
+              </button>
+            </div>
+          ))}
         </div>
       </div>
     </div>

@@ -33,7 +33,7 @@ const PopularCategories = () => {
     {
       id: 4,
       title: "MERN STACK Development",
-      subTitle: "1000+ Open Postions",
+      subTitle: "1000+ Open Positions",
       icon: <FaReact />,
     },
     {
@@ -61,21 +61,25 @@ const PopularCategories = () => {
       icon: <IoGameController />,
     },
   ];
+
   return (
-    <div className="categories">
-      <h3>POPULAR CATEGORIES</h3>
-      <div className="banner">
-        {categories.map((element) => {
-          return (
-            <div className="card" key={element.id}>
-              <div className="icon">{element.icon}</div>
-              <div className="text">
-                <p>{element.title}</p>
-                <p>{element.subTitle}</p>
-              </div>
+    <div className="flex flex-col mx-auto py-12 gap-9 max-w-full lg:max-w-[1500px] px-4 lg:px-0">
+      <h3 className="text-center text-5xl  mb-4">POPULAR CATEGORIES</h3>
+      <div className="flex flex-wrap justify-center lg:justify-between gap-8 lg:gap-8">
+        {categories.map((element) => (
+          <div
+            className="flex w-80 lg:w-[320px] box-border m-1 p-3 bg-[#f1f3f6] items-center gap-3 shadow transition-shadow hover:shadow-lg"
+            key={element.id}
+          >
+            <div className="text-2xl p-2.5 bg-[#e9f9ff] text-[#7469B6] flex items-center justify-center">
+              {element.icon}
             </div>
-          );
-        })}
+            <div className="text ">
+              <p className="text-lg font-bold">{element.title}</p>
+              <p className="text-sm font-light text-gray-500">{element.subTitle}</p>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

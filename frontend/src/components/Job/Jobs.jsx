@@ -25,21 +25,29 @@ const Jobs = () => {
   }
 
   return (
-    <section className="jobs page">
-      <div className="container">
-        <h1>ALL AVAILABLE JOBS</h1>
-        <div className="banner">
+    <section className="bg-[#f1f3f6] min-h-screen py-12 px-5">
+      <div className="flex flex-col items-center mx-auto gap-8 w-full max-w-[1500px] px-4 sm:px-6 lg:px-8">
+        <h1 className="text-5xl  text-center">
+          ALL AVAILABLE JOBS
+        </h1>
+        <div className="flex flex-wrap justify-center gap-8 w-full py-8">
           {jobs.jobs &&
-            jobs.jobs.map((element) => {
-              return (
-                <div className="card" key={element._id}>
-                  <p>{element.title}</p>
-                  <p>{element.category}</p>
-                  <p>{element.country}</p>
-                  <Link to={`/job/${element._id}`}>Job Details</Link>
-                </div>
-              );
-            })}
+            jobs.jobs.map((element) => (
+              <div
+                key={element._id}
+                className="bg-white w-80 h-56 p-5 flex flex-col gap-2 justify-center hover:shadow-lg transition-shadow duration-300"
+              >
+                <p className="font-bold text-xl">{element.title}</p>
+                <p className="text-lg text-gray-500">{element.category}</p>
+                <p className="text-base text-gray-500">{element.country}</p>
+                <Link
+                  to={`/job/${element._id}`}
+                  className="text-lg text-white rounded-lg hover:bg-[#7469B6] bg-[#887dc6] py-2 block text-center transition-all duration-300"
+                >
+                  Job Details
+                </Link>
+              </div>
+            ))}
         </div>
       </div>
     </section>

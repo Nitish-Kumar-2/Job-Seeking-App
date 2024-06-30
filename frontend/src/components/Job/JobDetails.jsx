@@ -28,37 +28,37 @@ const JobDetails = () => {
   }
 
   return (
-    <section className="jobDetail page">
-      <div className="container">
-        <h3>Job Details</h3>
-        <div className="banner">
-          <p>
-            Title: <span> {job.title}</span>
+    <section className="bg-[#f1f3f6] py-12 px-5 flex flex-col items-center justify-center min-h-96">
+    <div className="max-w-[1500px] mx-auto flex flex-col items-center justify-center w-full px-4 md:px-8">
+      <h3 className="text-5xl">Job Details</h3>
+        <div className=" w-full min-h-96 py-12 flex flex-col gap-6 justify-center">
+          <p className="font-bold text-[#7469B6]">
+            Title: <span className="text-[#18191c] font-normal"> {job.title}</span>
           </p>
-          <p>
-            Category: <span>{job.category}</span>
+          <p className="font-bold text-[#7469B6]">
+            Category: <span className="text-[#18191c] font-normal">{job.category}</span>
           </p>
-          <p>
-            Country: <span>{job.country}</span>
+          <p className="font-bold text-[#7469B6]">
+            Country: <span className="text-[#18191c] font-normal">{job.country}</span>
           </p>
-          <p>
-            City: <span>{job.city}</span>
+          <p className="font-bold text-[#7469B6]">
+            City: <span className="text-[#18191c] font-normal">{job.city}</span>
           </p>
-          <p>
-            Location: <span>{job.location}</span>
+          <p className="font-bold text-[#7469B6]">
+            Location: <span className="text-[#18191c] font-normal">{job.location}</span>
           </p>
-          <p>
-            Description: <span>{job.description}</span>
+          <p className="font-bold text-[#7469B6]">
+            Description: <span className="text-[#18191c] font-normal">{job.description}</span>
           </p>
-          <p>
-            Job Posted On: <span>{job.jobPostedOn}</span>
+          <p className="font-bold text-[#7469B6]">
+            Job Posted On: <span className="text-[#18191c] font-normal">{job.jobPostedOn}</span>
           </p>
-          <p>
+          <p className="font-bold text-[#7469B6]">
             Salary:{" "}
             {job.fixedSalary ? (
-              <span>{job.fixedSalary}</span>
+              <span className="text-[#18191c] font-normal">{job.fixedSalary}</span>
             ) : (
-              <span>
+              <span className="text-[#18191c] font-normal">
                 {job.salaryFrom} - {job.salaryTo}
               </span>
             )}
@@ -66,7 +66,12 @@ const JobDetails = () => {
           {user && user.role === "Employer" ? (
             <></>
           ) : (
-            <Link to={`/application/${job._id}`}>Apply Now</Link>
+            <Link
+              to={`/application/${job._id}`}
+              className="bg-[#7469B6] hover:bg-[#6d5fbb] rounded-lg text-white text-[20px] font-normal border-none px-[30px] py-[12px] no-underline mt-2.5 w-fit"
+            >
+              Apply Now
+            </Link>
           )}
         </div>
       </div>

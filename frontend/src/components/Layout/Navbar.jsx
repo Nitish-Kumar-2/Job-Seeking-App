@@ -1,32 +1,19 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../../main";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
-import toast from "react-hot-toast";
 import { GiHamburgerMenu } from "react-icons/gi";
-
+import { Logout } from "../../queries/getData";
 const Navbar = () => {
   const [show, setShow] = useState(false);
   const { isAuthorized, setIsAuthorized, user } = useContext(Context);
   const navigateTo = useNavigate();
   const location = useLocation();
 
-  const handleLogout = async () => {
-    try {
-      const response = await axios.get(
-        "http://localhost:4000/api/v1/user/logout",
-        {
-          withCredentials: true,
-        }
-      );
-      toast.success(response.data.message);
-      setIsAuthorized(false);
-      navigateTo("/login");
-    } catch (error) {
-      toast.error(error.response.data.message), setIsAuthorized(true);
-    }
-  };
-
+  const handleLogout=()=>{
+    Logout();
+    setIsAuthorized(false);
+    navigateTo("/login");
+  }
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
@@ -58,9 +45,9 @@ const Navbar = () => {
     >
       <div className="mx-auto flex justify-between items-center">
         <div className="flex items-center">
-          <div className="w-44 h-20">
-            <img src="/new_hirea.png" alt="logo" className="w-full h-full" />
-          </div>
+          <a href="/">
+            <img src="/new_hirea.png" alt="logo" className="h-24 -mt-4 " />
+          </a>
         </div>
         <ul
           className={`${
@@ -73,8 +60,8 @@ const Navbar = () => {
             <Link
               to="/"
               onClick={() => setShow(false)}
-              className={`text-[#f1f3f6] font-light text-lg relative transition-all hover:text-black duration-300 ${
-                location.pathname === "/" ? "underline text-black" : ""
+              className={`text-[#f1f3f6] font-light text-lg relative transition-all hover:font-normal duration-300 ${
+                location.pathname === "/" ? "underline text-white" : ""
               }`}
             >
               HOME
@@ -84,9 +71,9 @@ const Navbar = () => {
             <Link
               to="/job/getall"
               onClick={() => setShow(false)}
-              className={`text-[#f1f3f6] font-light text-lg relative transition-all hover:text-black duration-300 ${
+              className={`text-[#f1f3f6] font-light text-lg relative transition-all hover:font-normal duration-200 ${
                 location.pathname === "/job/getall"
-                  ? "underline text-black"
+                  ? "underline text-white "
                   : ""
               }`}
             >
@@ -97,9 +84,9 @@ const Navbar = () => {
             <Link
               to="/applications/me"
               onClick={() => setShow(false)}
-              className={`text-[#f1f3f6] font-light text-lg relative transition-all hover:text-black duration-300 ${
+              className={`text-[#f1f3f6] font-light text-lg relative transition-all hover:font-normal duration-300 ${
                 location.pathname === "/applications/me"
-                  ? "underline text-black"
+                  ? "underline text-white"
                   : ""
               }`}
             >
@@ -114,9 +101,9 @@ const Navbar = () => {
                 <Link
                   to="/job/post"
                   onClick={() => setShow(false)}
-                  className={`text-[#f1f3f6] font-light text-lg relative transition-all hover:text-black duration-300 ${
+                  className={`text-[#f1f3f6] font-light text-lg relative transition-all hover:font-normal duration-300 ${
                     location.pathname === "/job/post"
-                      ? "underline text-black"
+                      ? "underline text-white"
                       : ""
                   }`}
                 >
@@ -127,9 +114,9 @@ const Navbar = () => {
                 <Link
                   to="/job/me"
                   onClick={() => setShow(false)}
-                  className={`text-[#f1f3f6] font-light text-lg relative transition-all hover:text-black duration-300 ${
+                  className={`text-[#f1f3f6] font-light text-lg relative transition-all hover:font-normal duration-300 ${
                     location.pathname === "/job/me"
-                      ? "underline text-black "
+                      ? "underline text-white "
                       : ""
                   }`}
                 >

@@ -63,13 +63,13 @@ const MyApplications = () => {
           ) : (
             applications.map((element) => {
               return (
-                <JobSeekerCard
-                  element={element}
-                  key={element._id}
-                  deleteApplication={deleteApplication}
-                />
-              );
-            })
+              <JobSeekerCard
+                element={element}
+                key={element._id}
+                deleteApplication={deleteApplication}
+              />
+            );
+          })
           )}
         </div>
       ) : (
@@ -80,12 +80,12 @@ const MyApplications = () => {
           ) : (
             applications.map((element) => {
               return (
-                <EmployerCard
-                  element={element}
-                  key={element._id}
-                />
-              );
-            })
+              <EmployerCard 
+              element={element} 
+              key={element._id}
+              />
+            );
+          })
           )}
         </div>
       )}
@@ -98,70 +98,57 @@ export default MyApplications;
 
 const JobSeekerCard = ({ element, deleteApplication }) => {
   return (
-    <div className="flex flex-col sm:flex-row border-b border-gray-300 py-5 gap-4 items-center text-center sm:text-left">
-      <div className="flex-2 flex flex-col gap-1 pr-4 w-full sm:w-auto">
+    <div className="flex flex-col sm:flex-row items-start md:items-center border-b border-gray-200 py-5">
+      <div className="flex-grow flex flex-col gap-1 md:gap-2">
+        <p><span className="font-bold">Name:</span> {element.name}</p>
+        <p><span className="font-bold">Email:</span> {element.email}</p>
+        <p><span className="font-bold">Phone:</span> {element.phone}</p>
+        <p><span className="font-bold">Address:</span>
+        <span className="max-w-md block break-words">{element.address}</span></p>
         <p>
-          <span className="font-bold">Name:</span> {element.name}
+          <span className="font-bold">Cover Letter:</span> 
+          <span className="max-w-md block break-words">{element.coverLetter}</span>
         </p>
-        <p>
-          <span className="font-bold">Email:</span> {element.email}
-        </p>
-        <p>
-          <span className="font-bold">Phone:</span> {element.phone}
-        </p>
-        <p>
-          <span className="font-bold">Address:</span> {element.address}
-        </p>
-        <div >
-          <span className="font-bold">Cover Letter:</span>
-          <p >{element.coverLetter}</p>
-        </div>
-        <div className="resume">
-          <iframe
-            src={element.resume.url}
-            style={{ width: '250px', height: '700px', border: 'none' }}
-            title="PDF Viewer"
-          />
-        </div>
-        <div className="btn_area">
-          <button onClick={() => deleteApplication(element._id)}>
-            Delete Application
-          </button>
-        </div>
       </div>
-    </>
+      <div className="relative h-64 w-full md:w-64 mt-5 md:mt-0 md:mx-5">
+        <iframe
+          src={element.resume.url}
+          className="w-full h-full border-none"
+          title="PDF Viewer"
+        />
+      </div>
+      <div className="flex items-center justify-center w-full md:w-auto mt-5 md:mt-0">
+        <button
+          onClick={() => deleteApplication(element._id)}
+          className="bg-red-200 hover:text-white text-red-800 hover:bg-red-600 py-2.5 px-7 text-lg rounded-lg font-medium"
+        >
+          Delete Application
+        </button>
+      </div>
+    </div>
+    
   );
 };
 
-const EmployerCard = ({ element, openModal }) => {
+
+const EmployerCard = ({ element }) => {
   return (
-    <div className="flex flex-col sm:flex-row border-b border-gray-300 py-5 gap-4 items-center text-center sm:text-left">
-      <div className="flex flex-col gap-1 pr-4 w-full sm:w-auto">
-        <p>
-          <span className="font-bold">Name:</span> {element.name}
-        </p>
-        <p>
-          <span className="font-bold">Email:</span> {element.email}
-        </p>
-        <p>
-          <span className="font-bold">Phone:</span> {element.phone}
-        </p>
-        <p>
-          <span className="font-bold">Address:</span> {element.address}
-        </p>
-        <div >
-          <span className="font-bold">Cover Letter:</span>
-          <p >{element.coverLetter}</p>
-        </div>
-        <div className="resume">
-        <iframe
-            src={element.resume.url}
-            style={{ width: '250px', height: '700px', border: 'none' }}
-            title="PDF Viewer"
-          />
-        </div>
+    <div className="flex flex-col md:flex-row items-start md:items-center border-b border-gray-200 py-5">
+      <div className="flex-grow flex flex-col gap-1 md:gap-2">
+        <p><span className="font-bold">Name:</span> {element.name}</p>
+        <p><span className="font-bold">Email:</span> {element.email}</p>
+        <p><span className="font-bold">Phone:</span> {element.phone}</p>
+        <p><span className="font-bold">Address:</span> {element.address}</p>
+        <p><span className="font-bold">Cover Letter:</span> {element.coverLetter}</p>
       </div>
-    </>
+      <div className="relative h-64 w-full md:w-64 mt-5 md:mt-0 md:mx-5">
+        <iframe
+          src={element.resume.url}
+          className="w-full h-full border-none"
+          title="PDF Viewer"
+        />
+      </div>
+    </div>
   );
 };
 
